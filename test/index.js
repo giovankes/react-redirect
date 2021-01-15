@@ -1,5 +1,5 @@
-const require("assert");
-const hikeConfig = require("@gohike.nl/react-redirection")["hikeConfig"]
+const assert = require("assert");
+const hikeConfig = require("@gohike.nl/react-redirection")["hikeConfig"];
 const Redirect = require("@gohike.nl/react-redirection").default;
 const redirection = new Redirect();
 const fetch = require("isomorphic-unfetch");
@@ -26,4 +26,3 @@ describe("Redirect Class", () => {
     fetch(hikeConfig.wordpress.routes.redirection);
   });
 });
-

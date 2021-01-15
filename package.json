@@ -46,7 +46,6 @@
     "dist"
   ],
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
     "@gohike.nl/react-redirection": "file:.yalc/@gohike.nl/react-redirection",
     "isomorphic-unfetch": "^3.1.0",
     "next": "10.0.3"
