@@ -4,7 +4,8 @@ const nextConfig = require("next/config");
 const { publicRuntimeConfig = {} } = nextConfig.default() || {};
 const { ENV = "development" } = publicRuntimeConfig;
 const environment = ENV || "development";
-const getUnique = (arr, comp) => {
+
+function getUnique(arr, comp) {
   const unique = arr
     .map((e) => e[comp])
     .map((e, i, final) => final.indexOf(e) === i && i)
@@ -12,9 +13,9 @@ const getUnique = (arr, comp) => {
     .map((e) => arr[e]);
 
   return unique;
-};
+}
 
-const initRedirection = ({ config }) => {
+function initRedirection(config) {
   if (!config.wordpress.routes.redirection) return;
   fetch(config.wordpress.routes.redirection)
     .then((res) => res.json())
@@ -26,14 +27,14 @@ const initRedirection = ({ config }) => {
       }
     });
   return;
-};
+}
 
-class Redirect {
-  constructor({ config }) {
+export default class Redirection {
+  constructor(config) {
     this.config = config;
   }
-  redirection = async (req, res, next) => {
-    initRedirection({ config: this.config });
+  redirect = async (req, res, next) => {
+    initRedirection(this.config);
     const config = this.config;
     if (config.wordpress.routes.redirection) {
       try {
@@ -99,4 +100,3 @@ class Redirect {
   };
 }
 
-export default Redirect;

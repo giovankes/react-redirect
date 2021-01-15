@@ -1,10 +1,10 @@
 {
   "name": "@gohike.nl/react-redirection",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "redirection tool for react",
   "author": "Gio",
   "license": "MIT",
-  "repository": "bitbucket.org:gohike/react-redirection.git",
+  "repository": "https://bitbucket.org/gohike/react-redirect/src/master/",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
