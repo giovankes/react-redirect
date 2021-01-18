@@ -32,9 +32,9 @@ function initRedirection(config) {
 export default class Redirection {
   constructor(config) {
     this.config = config;
+    initRedirection(config);
   }
   redirect = async (req, res, next) => {
-    initRedirection(this.config);
     const config = this.config;
     if (config.wordpress.routes.redirection) {
       try {
@@ -99,4 +99,3 @@ export default class Redirection {
     }
   };
 }
-
