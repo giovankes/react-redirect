@@ -65,7 +65,7 @@ export default class Redirection {
                   regex,
                 } = redirect;
 
-                //Check if redirection is enabled and the window path == to the
+                //Check if the redirection is enabled and the window path is set to the
                 //redirection url
                 if (enabled && req.path === url) {
                   res.writeHead(action_code, {
