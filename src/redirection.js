@@ -5,14 +5,17 @@ const { publicRuntimeConfig = {} } = nextConfig.default() || {};
 const { ENV = "development" } = publicRuntimeConfig;
 const environment = ENV || "development";
 
-function getUnique(arr, comp) {
-  const unique = arr
-    .map((e) => e[comp])
-    .map((e, i, final) => final.indexOf(e) === i && i)
-    .filter((e) => arr[e])
-    .map((e) => arr[e]);
+function pluck(objects) {
+  //Return all objects
+  return objects;
+}
 
-  return unique;
+function array_uniques(values) {
+  //Check array values for duplicates
+  return values.filter((value, index, self) => {
+    //Has a value been found?
+    return self.indexOf(value) === index;
+  });
 }
 
 function initRedirection(config) {
@@ -44,16 +47,15 @@ export default class Redirection {
         if (!redirect.ok) {
           throw new Error(redirect.statusText);
         }
-
         await redirect
           .json()
           .then((resp) => {
             //Check if the fetch got any responses.
             if (resp.items && resp.items.length > 0) {
               //get all unique urls from items array
-              const uniqueArray = getUnique(resp.items, "url");
-              uniqueArray.sort((a, b) => a.regex - b.regex);
-              uniqueArray.some((redirect) => {
+              const urls = array_uniques(pluck(resp.items, "url"));
+              urls.sort((a, b) => a.regex - b.regex);
+              urls.some((redirect) => {
                 const {
                   url,
                   url_from,
@@ -64,7 +66,7 @@ export default class Redirection {
                   enabled,
                   regex,
                 } = redirect;
-
+                console.log(redirect);
                 //Check if the redirection is enabled and the window path is set to the
                 //redirection url
                 if (enabled && req.path === url) {
