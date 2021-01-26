@@ -66,7 +66,6 @@ export default class Redirection {
                   enabled,
                   regex,
                 } = redirect;
-                console.log(redirect);
                 //Check if the redirection is enabled and the window path is set to the
                 //redirection url
                 if (enabled && req.path === url) {
