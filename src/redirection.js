@@ -7,7 +7,7 @@ const environment = ENV || "development";
 
 function pluck(objects) {
   //Return all objects
-  return objects;
+  return objects || {};
 }
 
 function array_uniques(values) {

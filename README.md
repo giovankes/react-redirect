@@ -1,5 +1,7 @@
 # React-Redirection 🚀
 
+## Please know this package is still under development.
+
 [Redirection](https://en.wordpress.org/plugins/redirection/) is a plugin in wordpress that handles redirects.
 
 This package is for handling redirects using a headless wordpress template.
@@ -13,7 +15,7 @@ It's a React component, so you can just pass down the things you need as a prop.
 :white_check_mark:
 
 ```jsx
-import { Link } from '@hike/react-redirection'
+import { Link } from "@hike/react-redirection";
 
 const App = (data) => (
   <Link
@@ -24,9 +26,9 @@ const App = (data) => (
   >
     Link
   </Link>
-)
+);
 
-export default App
+export default App;
 ```
 
 ## Features
@@ -38,11 +40,11 @@ Currently we support:
 
 Up and coming:
 
-- [  ] Server name redirects.(from gohike.eu to gohike.nl/en)
-- [  ] URL and language (Redirects)
-- [  ] 404 (Response)
-- [  ] URL and header (Redirect)
-- [  ] HTTP codes (Response)
+- [ ] Server name redirects.(from gohike.eu to gohike.nl/en)
+- [ ] URL and language (Redirects)
+- [ ] 404 (Response)
+- [ ] URL and header (Redirect)
+- [ ] HTTP codes (Response)
 
 Never going to be supported:
 
