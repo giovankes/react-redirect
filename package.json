@@ -1,6 +1,6 @@
 {
   "name": "@gohike.nl/react-redirection",
-  "version": "1.0.8",
+  "version": "1.0.0-beta.1",
   "description": "redirection tool for react",
   "author": "Gio",
   "license": "MIT",
