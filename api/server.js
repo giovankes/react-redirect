@@ -1,14 +1,20 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const app = express();
+const bson = require("bson");
+const fs = require("fs");
+//object
+
 // middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.post("/wp/redirections", (req, res) => {
   req.on("close", () => {
-    console.log(req.body);
-    res.end();
+    const doc = req.body;
+    const data = bson.serialize(doc);
+    console.log(data);
+    fs.writeFileSync("data.json", data);
   });
 });
 
