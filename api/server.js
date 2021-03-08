@@ -4,6 +4,7 @@ const app = express();
 // middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+
 app.post("/wp/redirections", (req, res) => {
   req.on("close", () => {
     console.log(req.body);
