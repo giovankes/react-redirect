@@ -1,28 +1,13 @@
-const assert = require("assert");
-const hikeConfig = require("@gohike.nl/react-redirection")["hikeConfig"];
-const Redirect = require("@gohike.nl/react-redirection").default;
-const redirection = new Redirect();
-const fetch = require("isomorphic-unfetch");
-describe("hikeConfig", () => {
-  it("should check if config exists", () => {
-    assert(hikeConfig);
-  });
-  it("should check if it can fetch wordpress routes", () => {
-    assert(hikeConfig.wordpress.routes);
-  });
-  it("should find redirection route", () => {
-    assert(hikeConfig.wordpress.routes.redirection, "✅");
-  });
-});
 
-describe("Redirect Class", () => {
-  it("should create a new class", () => {
-    assert(redirection);
-  });
-  it("should create a new redirection object", () => {
-    assert(redirection.redirection);
-  });
-  it("should be able to fetch back-end data", () => {
-    fetch(hikeConfig.wordpress.routes.redirection);
-  });
-});
+
+describe('My first test', () => {                                                                                                                                                                          
+    const redirection;                                                                                                                                                                                       
+    before(() => {                                                                                                                                                                                           
+      // @TODO this would be a better name. Write_json is wrong because it is not what the class is about                                                                                                    
+      redirection = new Redirection_DB();                                                                                                                                                                    
+    });                                                                                                                                                                                                      
+    it('Creates new redirection.json with one redirect added', () => {                                                                                                                                       
+      redirection.add({ REDIRECTION_OBJECT });                                                                                                                                                               
+      // @TODO assertions go here                                                                                                                                                                            
+    });                                                                                                                                                                                                      
+  });    
