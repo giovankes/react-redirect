@@ -15,7 +15,7 @@
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
-    "test": "mocha",
+    "test": "mocha test/index.js",
     "api": "nodemon api/server.js"
   },
   "peerDependencies": {

@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = './redirection.json';
+const fs = require("fs");
+const path = "./redirection.json";
 
-class Write_Json {
+class Redirection_DB {
   constructor({ redirection }) {
     this.redirection = redirection;
   }
@@ -37,6 +37,9 @@ class Write_Json {
       this.write();
     }
   }
+  add({ props }){
+    fs.writeFileSync('./works.json', JSON.stringify(props));
+  }
 }
 
-module.exports = Write_Json;
+module.exports = Redirection_DB;

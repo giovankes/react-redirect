@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyparser = require('body-parser');
+const express = require("express");
+const bodyparser = require("body-parser");
 const app = express();
-const Write_Json = require('./src/Write_Json.js');
+const Redirection_DB = require("./src/Redirection_DB.js");
 // middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
-app.post('/wp/redirections', async (req, res) => {
+app.post("/wp/redirections", async (req, res) => {
   const redirection = new Write_Json({ redirection: req.body });
 
   redirection.check();
