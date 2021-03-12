@@ -1,23 +1,14 @@
-const express = require("express");
-const bodyparser = require("body-parser");
+const express = require('express');
+const bodyparser = require('body-parser');
 const app = express();
-const bson = require("bson");
-const fs = require("fs");
-//object
-
+const Write_Json = require('./src/Write_Json.js');
 // middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
-app.post("/wp/redirections", (req, res) => {
-  req.on("close", () => {
-    const doc = req.body;
-    const data = bson.serialize(doc);
-    console.log(data);
-    fs.writeFileSync("data.json", data);
-  });
-});
+app.post('/wp/redirections', async (req, res) => {
+  const redirection = new Write_Json({ redirection: req.body });
 
-app.listen(process.env.PORT || 3002, () => {
-  console.log(`API running on port ${process.env.PORT || 3002} 🚀`);
+  redirection.check();
 });
+app.listen(3002, () => console.log(`API is running on port 3002 🚀`));
