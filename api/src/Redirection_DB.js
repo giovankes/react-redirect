@@ -14,7 +14,7 @@ class Redirection_DB {
     //infrastructure to easily append new redirections to
 
     fs.writeFileSync(
-      "./api/src/redirection.json",
+      path,
       JSON.stringify(this.redirection),
       "utf8",
       function (e) {
@@ -45,10 +45,14 @@ class Redirection_DB {
     } else {
       //Append new redirection to JSON file
       //@TODO append new redirection to JSON file
-      console.log(parsed_json.id);
-      console.log(ID);
-      console.log(this.redirection);
       console.log("Hey! new redirection");
+      let json = [{ ...parsed_json, [ID]: this.redirection }];
+
+      console.log(JSON.stringify(json));
+      fs.writeFileSync(path, JSON.stringify(json), "utf8", function (e) {
+        if (e) console.error(e);
+        console.log("Done updating");
+      });
     }
   }
 
