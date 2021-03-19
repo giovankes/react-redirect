@@ -7,7 +7,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.post("/wp/redirections", async (req, res) => {
-  const redirection = new Write_Json({ redirection: req.body });
+  const redirection = new Redirection_DB({ redirection: req.body });
 
   redirection.check();
 });

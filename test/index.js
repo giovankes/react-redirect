@@ -13,4 +13,7 @@ describe("My first test", () => {
     const parsed_json = JSON.parse(raw_json);
     redirection.add({ props: parsed_json });
   });
+  it("Checks data types for redirection", () => {
+    redirection.redirect.should.be.an("array");
+  });
 });
