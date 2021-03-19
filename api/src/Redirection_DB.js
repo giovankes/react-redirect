@@ -1,4 +1,7 @@
+//modules
 const fs = require("fs");
+
+//variables
 const path = "./api/src/redirection.json";
 
 class Redirection_DB {
@@ -38,13 +41,11 @@ class Redirection_DB {
       //appending a new one.
       //@TODO update existing redirection, either by updating the existing
       //values, or deleting them and appending a new one
-      console.log("Update existing redirection");
       console.log(ID);
       console.log(parsed_json.id);
     } else {
       //Append new redirection to JSON file
       //@TODO append new redirection to JSON file
-      console.log("Hey! new redirection");
       console.log([...parsed_json]);
       console.log([{ ...this.redirection }]);
       let json = [{ ...parsed_json, ...this.redirection }];
