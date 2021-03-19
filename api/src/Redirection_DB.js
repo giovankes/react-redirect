@@ -12,10 +12,9 @@ class Redirection_DB {
   write() {
     //TODO: Write a function that creates a new json file with the correct
     //infrastructure to easily append new redirections to
-
     fs.writeFileSync(
       path,
-      JSON.stringify(this.redirection),
+      JSON.stringify([{ ...this.redirection }]),
       "utf8",
       function (e) {
         if (e) console.error(e);
@@ -39,19 +38,20 @@ class Redirection_DB {
       //appending a new one.
       //@TODO update existing redirection, either by updating the existing
       //values, or deleting them and appending a new one
-      console.log("gottem bois");
+      console.log("Update existing redirection");
       console.log(ID);
       console.log(parsed_json.id);
     } else {
       //Append new redirection to JSON file
       //@TODO append new redirection to JSON file
       console.log("Hey! new redirection");
-      let json = [{ ...parsed_json, [ID]: this.redirection }];
-
-      console.log(JSON.stringify(json));
+      console.log([...parsed_json]);
+      console.log([{ ...this.redirection }]);
+      let json = [{ ...parsed_json, ...this.redirection }];
+      console.log(json);
       fs.writeFileSync(path, JSON.stringify(json), "utf8", function (e) {
         if (e) console.error(e);
-        console.log("Done updating");
+        console.log("done");
       });
     }
   }
@@ -68,7 +68,6 @@ class Redirection_DB {
     } else {
       //is this not the case?
       //then we have to write a new json file
-
       this.write();
     }
   }
