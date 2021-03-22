@@ -11,9 +11,8 @@ describe("My first test", () => {
     // @TODO assertions go here
     const raw_json = fs.readFileSync("./test/test.json");
     const parsed_json = JSON.parse(raw_json);
-    redirection.add({ props: parsed_json });
   });
-  it("Checks data types for redirection", () => {
-    redirection.redirect.should.be.an("array");
+  it("Serializes database and input data in the table", () => {
+    redirection.__init__();
   });
 });
