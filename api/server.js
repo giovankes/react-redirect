@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const app = express();
+const fs = require("fs");
 const Redirection_DB = require("./src/Redirection_DB.js");
 // middleware
 app.use(bodyparser.json());
@@ -9,6 +10,6 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.post("/wp/redirections", async (req, res) => {
   const redirection = new Redirection_DB({ redirection: req.body });
 
-  redirection.check();
+  redirection.__init__();
 });
 app.listen(3002, () => console.log(`API is running on port 3002 🚀`));
