@@ -13,7 +13,7 @@ package-lock.json
 
 # testing
 /coverage
-
+dist/
 
 # misc
 .DS_Store
