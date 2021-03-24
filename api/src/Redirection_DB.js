@@ -15,9 +15,9 @@ class Redirection_DB {
     let json_red = JSON.stringify(this.redirection);
     db.serialize(function () {
       db.exec(
-        "CREATE TABLE IF NOT EXISTS redirection (id INTEGER, redirection TEXT)"
+        "CREATE TABLE IF NOT EXISTS redirections (id INTEGER, redirection TEXT)"
       );
-      db.all("SELECT * FROM redirection", (e, r) => {
+      db.all("SELECT * FROM redirections", (e, r) => {
         r.map((result, key) => {
           if (result.id === ID) {
             duplicate_redirection = true;
@@ -29,10 +29,18 @@ class Redirection_DB {
         if (duplicate_redirection === true) {
           //if the redirection is a dupe we want to update the appropiate
           //redirection, instead of adding  a new one
+          //@@TODO: update redirection
+          db.exec(
+            `UPDATE redirections SET redirection = '${json_red}' WHERE id = '${ID}'`,
+            (e) => {
+              if (e) throw e;
+              console.log("Updated");
+            }
+          );
         } else {
           //is it a new redirection? cool, then we just insert it into the
           //database
-          const stmt = db.prepare(`INSERT INTO redirection VALUES(?,?)`);
+          const stmt = db.prepare(`INSERT INTO redirections VALUES(?,?)`);
           stmt.run(`${ID}`, `${json_red}`);
           stmt.finalize();
           console.log("done");
