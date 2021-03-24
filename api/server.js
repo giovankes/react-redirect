@@ -10,6 +10,6 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.post("/wp/redirections", async (req, res) => {
   const redirection = new Redirection_DB({ redirection: req.body });
 
-  redirection.write();
+  redirection.write_redirect();
 });
 app.listen(3002, () => console.log(`API is running on port 3002 🚀`));
