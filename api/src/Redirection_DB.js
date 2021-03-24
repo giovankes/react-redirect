@@ -1,20 +1,6 @@
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("hike_red");
 const fs = require("fs");
-let sql_select = `SELECT * FROM redirection`;
-//async function read_database() {
-//  let result
-//  db.serialize(async () => {
-//    await db.get(sql_select, async (e, r) => {
-//      if (e) console.error(e);
-//      if (r.length > 0) {
-//        result = r;
-//      } else {
-//        return;
-//      }
-//    });
-//  });
-//}
 
 class Redirection_DB {
   constructor({ redirection }) {
@@ -28,27 +14,29 @@ class Redirection_DB {
     //Check if id is already in the database and insert || update accordingly
     let json_red = JSON.stringify(this.redirection);
     db.serialize(function () {
-      db.run(
+      db.exec(
         "CREATE TABLE IF NOT EXISTS redirection (id INTEGER, redirection TEXT)"
       );
-      const stmt = db.prepare(`INSERT INTO redirection VALUES(?,?)`);
-      //if (Object.values(results).indexOf(ID) > -1) {
-      //  console.log("yes");
-      //} else {
-      //  console.log("no");
-      //}
-      stmt.run(`${ID}`, `"${json_red}"`);
-      stmt.finalize();
-
       db.all("SELECT * FROM redirection", (e, r) => {
-        let results = r;
-        results.map((result, key) => {
-          if (Object.values(result).indexOf(ID) > -1) {
-            console.log("yes");
+        r.map((result, key) => {
+          if (result.id === ID) {
+            duplicate_redirection = true;
           } else {
             console.log("no");
           }
         });
+        console.log(duplicate_redirection);
+        if (duplicate_redirection === true) {
+          //if the redirection is a dupe we want to update the appropiate
+          //redirection, instead of adding  a new one
+        } else {
+          //is it a new redirection? cool, then we just insert it into the
+          //database
+          const stmt = db.prepare(`INSERT INTO redirection VALUES(?,?)`);
+          stmt.run(`${ID}`, `${json_red}`);
+          stmt.finalize();
+          console.log("done");
+        }
       });
     });
   }
