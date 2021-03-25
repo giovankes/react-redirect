@@ -6,7 +6,6 @@ class DB_Model{
   
    update_redirect(){
      let redirection = this.data;
-     console.log(redirection)
   }
   
 }
