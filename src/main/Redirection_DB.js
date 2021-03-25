@@ -14,8 +14,9 @@ class Redirection_DB {
     let json_red = JSON.stringify(this.redirection);
 
     let dbmodel = new DB_Model({ data: this.redirection });
-
-    dbmodel.update_redirect({ id: ID });
+    
+  console.log(ID)
+    dbmodel.check(ID);
   }
 }
 

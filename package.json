@@ -6,8 +6,6 @@
   "license": "MIT",
   "repository": "https://bitbucket.org/gohike/react-redirect/src/master/",
   "main": "dist/index.js",
-  "module": "dist/index.modern.js",
-  "source": "src/index.js",
   "engines": {
     "node": ">=10"
   },
@@ -16,7 +14,7 @@
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "mocha test/index.js",
-    "api":"nodemon ./api/server.js"
+    "api": "nodemon ./src/server.js"
   },
   "peerDependencies": {
     "react": "^16.0.0"
