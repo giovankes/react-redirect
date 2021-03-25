@@ -1,7 +1,7 @@
-const express = require("express");
-const bodyparser = require("body-parser");
+import express from "express";
+import bodyparser from "body-parser";
 const app = express();
-const Redirection_DB = require("./src/Redirection_DB.js");
+import Redirection_DB from "main/Redirection_DB.js";
 // middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));

@@ -16,7 +16,7 @@
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "mocha test/index.js",
-    "api": "rollup -c -w"
+    "api":"nodemon ./api/server.js"
   },
   "peerDependencies": {
     "react": "^16.0.0"
