@@ -16,7 +16,7 @@
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "mocha test/index.js",
-    "api": "nodemon api/server.js"
+    "api": "rollup -c -w"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -25,6 +25,7 @@
     "@babel/core": "^7.13.8",
     "@babel/node": "^7.13.0",
     "@babel/preset-env": "^7.13.9",
+    "@rollup/plugin-run": "^2.0.2",
     "babel-eslint": "^10.0.3",
     "chai": "^4.3.3",
     "cross-env": "^7.0.2",
@@ -45,7 +46,9 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "rollup": "^1.32.1",
+    "rollup-plugin-filesize": "^9.1.1"
   },
   "files": [
     "dist"

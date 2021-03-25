@@ -14,7 +14,8 @@ package-lock.json
 # testing
 /coverage
 dist/
-
+dir/
+dist
 # misc
 .DS_Store
 .env

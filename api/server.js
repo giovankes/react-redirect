@@ -1,7 +1,6 @@
-const express = require("express");
-const bodyparser = require("body-parser");
+import express from "express";
+import bodyparser from "bodyparser";
 const app = express();
-const fs = require("fs");
 const Redirection_DB = require("./src/Redirection_DB.js");
 // middleware
 app.use(bodyparser.json());
