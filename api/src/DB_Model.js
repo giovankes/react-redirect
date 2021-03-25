@@ -1,4 +1,3 @@
-const sqlit
 
 class DB_Model{
   constructor({data}){

@@ -1,8 +1,7 @@
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("hike_red");
-const fs = require("fs");
 const DB_Model = require("./DB_Model.js");
-class Redirection_DB {
+export default class Redirection_DB {
   constructor({ redirection }) {
     this.redirection = redirection;
   }
@@ -54,4 +53,3 @@ class Redirection_DB {
     //});
   }
 }
-module.exports = Redirection_DB;
