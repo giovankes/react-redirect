@@ -6,7 +6,7 @@ const dev = process.env.NODE_ENV !== "production";
 export default {
   input: "api/server.js",
   output: {
-    file: "bundle.js",
+    file: "dir/bundle.js",
     format: "cjs",
   },
   plugins: [dev && run() && filesize()],
