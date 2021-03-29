@@ -14,9 +14,7 @@ describe("Redirect test", () => {
   it("Serializes the database with data", () =>{
     //@@TODO:Serialize database;
 
-    const raw_json = fs.readFileSync("./test/test.json");
-    const parsed_json = JSON.parse(raw_json);
 
-   redirection.__init__(); 
+   redirection.test(); 
   })
 });
