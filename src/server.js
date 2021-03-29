@@ -5,7 +5,6 @@ const Redirection_DB = require("./main/Redirection_DB.js");
 // middleware
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
-
 app.post("/wp/redirections", async (req, res) => {
   const redirection = new Redirection_DB({ redirection: req.body });
 

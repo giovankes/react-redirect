@@ -7,17 +7,33 @@ class Redirection_DB {
   }
   //This'll write the new redirection to the database
   //@TODO: Only write new redirections.
+  //
+  __init__() {
+    
+    db.serialize(() => {
+      db.run(
+        "CREATE TABLE redirections (id INTEGER, redirection TEXT)",
+        (e) => {
+          if (e) throw e;
+        }
+      );
+    });
+  }
   write_redirect() {
+    //create new database with the correct infrastructure
+    __init__();
+    //@@TODO: create new database;
     let ID = this.redirection.id;
-    let duplicate_redirection = false;
+    let duplicate_redirection = false; 
     //Check if id is already in the database and insert || update accordingly
     let json_red = JSON.stringify(this.redirection);
 
     let dbmodel = new DB_Model({ data: this.redirection });
-    
-  console.log(ID)
-    dbmodel.check(ID);
+
+    console.log(ID);
+    //dbmodel.check(ID);
   }
 }
+
 
 module.exports = Redirection_DB;
