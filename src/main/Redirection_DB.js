@@ -48,12 +48,12 @@ class Redirection_DB {
 
     let dbmodel = new DB_Model({ data: this.redirection });
     dbmodel.check(ID, json_red);
-  } 
+  }
 
   //This functions is ONLY used when running tests. Please don't change this
   //code, and if you do: Please make sure all the tests pass again :)
-  test() {
-    const ID = parseInt(test_json.id);
+  write_test() {
+    const ID = parseInt((test_json.id += 1));
     console.log(typeof ID);
     const json_red = JSON.stringify(test_json);
     let results;
@@ -66,13 +66,38 @@ class Redirection_DB {
     );
     db.all("SELECT * FROM test", (e, r) => {
       if (e) throw e;
-      console.log(r);
       const stmt = db.prepare("INSERT INTO test VALUES(?,?)", (e) => {
         if (e) throw e;
       });
       stmt.run(`${ID}`, `${json_red}`);
       stmt.finalize();
-      console.log("Done");
+    });
+  }
+
+  update_test() {
+    const red_json = JSON.stringify(test_json);
+    const ID = parseInt((test_json.id += 1));
+
+    db.all("SELECT * FROM test", (e, r) => {
+      if (e) throw e;
+      if (r) {
+        if (r && r.length <= 0) {
+          return;
+        } else {
+          console.log(r.id)
+          db.exec(
+            `UPDATE test SET id='${r.id + 1}' WHERE id = '${r.id}'`,
+            (e, r) => {
+              if (e) throw e;
+              console.log(r);
+            }
+          );
+        }
+
+        console.log(r);
+
+        console.log("updated");
+      }
     });
   }
 }

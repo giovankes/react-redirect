@@ -6,17 +6,19 @@ const fs = require("fs");
 // correctly. (Like a test should :P)
 //
 //@@TODO: Finish test
-describe("Serialize // init test", () => {
+describe("Write && Update tests", () => {
   let redirection;
   before(() => {
-    redirection = new Redirection_DB({redirection:test_json});
-  })
-  it("Serializes the database with data", () =>{
+    redirection = new Redirection_DB({ redirection: test_json });
+  });
+  it("write redirection to the database", () => {
     //@@TODO:Serialize database;
-    //@@TODO: 
+    //@@TODO:
+    redirection.write_test();
+  });
 
+  it("updates existing redirection in the database" , () =>{
 
-   redirection.test(); 
+    redirection.update_test();
   })
 });
-
