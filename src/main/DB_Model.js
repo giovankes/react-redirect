@@ -1,6 +1,6 @@
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("hike_red");
-const write_redirect = require("./Object/write_redirection.js");
+const write_redirect = require("./functions/write_redirection.js");
 
 class DB_Model {
   constructor({ data }) {
