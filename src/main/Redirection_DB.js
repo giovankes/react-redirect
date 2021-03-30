@@ -54,9 +54,7 @@ class Redirection_DB {
   //code, and if you do: Please make sure all the tests pass again :)
   write_test() {
     const ID = parseInt((test_json.id += 1));
-    console.log(typeof ID);
     const json_red = JSON.stringify(test_json);
-    let results;
     db.exec(
       "CREATE TABLE IF NOT EXISTS test (id INTEGER, redirection TEXT)",
       (e) => {
@@ -84,17 +82,14 @@ class Redirection_DB {
         if (r && r.length <= 0) {
           return;
         } else {
-          console.log(r.id)
           db.exec(
             `UPDATE test SET id='${r.id + 1}' WHERE id = '${r.id}'`,
             (e, r) => {
               if (e) throw e;
-              console.log(r);
             }
           );
         }
 
-        console.log(r);
 
         console.log("updated");
       }

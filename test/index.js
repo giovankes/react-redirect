@@ -18,7 +18,6 @@ describe("Write && Update tests", () => {
   });
 
   it("updates existing redirection in the database" , () =>{
-
     redirection.update_test();
   })
 });
