@@ -59,7 +59,6 @@ class Redirection_DB {
       "CREATE TABLE IF NOT EXISTS test (id INTEGER, redirection TEXT)",
       (e) => {
         if (e) throw e;
-        console.log("database initialized");
       }
     );
     db.all("SELECT * FROM test", (e, r) => {
@@ -89,9 +88,6 @@ class Redirection_DB {
             }
           );
         }
-
-
-        console.log("updated");
       }
     });
   }
